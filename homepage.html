@@ -35,15 +35,12 @@
 	<header
 		class="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 		<a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-			<img class="bi me-2" role="img" src="./public/images/site icon.png" alt="Find Your Next PEt Logo">
+			<img class="bi me-2" id="logo" role="img" src="./public/images/site icon.png" alt="Find Your Next Pet Logo">
 		</a>
 
 		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-			<li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-			<li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-			<li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-			<li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-			<li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+			<li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+			<li><a href="/search" class="nav-link px-2 link-dark">Pet Search</a></li>
 		</ul>
 
 		<div class="col-md-3 text-end">
@@ -52,7 +49,7 @@
 		</div>
 	</header>
 
-	<div class="container col-xxl-8 px-4 py-5">
+	<div class="container col-xxl-8 px-4 py-5 hero">
 		<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
 			<div class="col-10 col-sm-8 col-lg-6">
 				<img id="newestpetimg" src="./public/images/guven-gunes-ywN2NYWB5LE-unsplash.jpg" class="d-block mx-lg-auto img-fluid" alt="dog awaits adoption" width="700"
@@ -60,7 +57,12 @@
 			</div>
 			<div class="col-lg-6">
 				<h1 class="display-5 fw-bold lh-1 mb-3">Take a look at who's just come up for adoption!</h1>
-				<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque laudantium sunt in. Numquam, labore temporibus maiores earum nostrum ducimus quasi eveniet illum, est obcaecati nihil optio cupiditate velit, suscipit atque.</p>
+				<ul class="herolist" style="list-style: none;">
+					<li><h3>{{name}}</h3></li>
+					<li><p class="lead">{{description}}</p></li>
+					<li>{{location}}</li>
+				</ul>
+				
 				<div class="d-grid gap-2 d-md-flex justify-content-md-start">
 					<button type="button" class="btn btn-primary btn-lg px-4 me-md-2">see details</button>
 				</div>
@@ -72,11 +74,28 @@
 		<section class="row container d-flex flex-wrap py-3 mb-4">
 			<div id="petdetailcontainer" class="col-12 col-lg-6 col-xxl-5 p-2 m-1">
 				<div class="col-12"><img id="petdetailimg" class="col-6" src="./public/images/ryan-walton-uKtvYMGe8ls-unsplash.jpg" alt="dog"></div>
-				<div id="petdetailname" class="col-12"><h3>DOGNAME - <i class="<i class="fa-solid fa-circle-heart"></i></h3></div>
-				<div id="petdetaillocal" class="col-12">
-					<h4>DOGPLACE, ADDRESS</h4>
-				</div>
-				<div id="petdetailtext" class="col-12"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aliquid, laboriosam optio perspiciatis unde at.</p></div>
+				<div id="petdetailname" class="col-12"><h3>{{name}} - <i class="savedhearticondetail"><button>Save</button></i></h3></div>
+				<div id="petdetailtext" class="col-12"><ul class="herolist" style="list-style: none;">
+					
+					<li>
+						{{type | species}}
+					</li>
+					<li>
+						{{breed}}
+					</li>
+					<li>
+						{{gender}}
+					</li>
+					<li>
+						{{age}}
+					</li>
+					<li>
+						<p>{{description}}</p>
+					</li>
+					<li>
+						{{location}}
+					</li>
+				</ul></div>
 			</div>
 
 			<div id="savedpetscontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
@@ -84,37 +103,88 @@
 					<h3>Your Saved Pets</h3>
 				</div>
 				<div id="savedpetslist" style="overflow:auto;">
-					<div class="card mb-3" style="max-width: 540px;">
+					<div class="card mb-3">
 						<div class="row g-0">
 							<div class="col-md-4">
-								<img src="./public/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg" class="img-fluid rounded-start" alt="...">
+								<div class="savedpetimageholder">
+									<img src="./public/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg" class="img-fluid" alt="...">
+								</div>
 							</div>
 							<div class="col-md-8">
 								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-										content. This content is a little bit longer.</p>
-									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+									<i class="savedhearticon"><button>Unsave</button></i>
+									<h5 class="card-title">{{name}}</h5>
+									<ul class="card-text" style="list-style: none;">
+										<li>{{gender}}</li>
+										<li>{{breed}}</li>
+										<li>{{age}}</li>
+									</ul>
+									<p class="card-text"><small class="text-muted">last viewed {{date}}</small></p>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="card mb-3">
-						<img src="./public/images/fatty-corgi-1QsQRkxnU6I-unsplash.jpg" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-								This content is a little bit longer.</p>
-							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+						<div class="row g-0">
+							<div class="col-md-4">
+								<div class="savedpetimageholder">
+									<img src="./public/images/fatty-corgi-1QsQRkxnU6I-unsplash.jpg" class="img-fluid" alt="...">
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<i class="savedhearticon"><button>Unsave</button></i>
+									<h5 class="card-title">{{name}}</h5>
+									<ul class="card-text" style="list-style: none;">
+										<li>{{gender}}</li>
+										<li>{{breed}}</li>
+										<li>{{age}}</li>
+									</ul>
+									<p class="card-text"><small class="text-muted">last viewed {{date}}</small></p>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="card mb-3">
-						<img src="./public/images/max-baskakov-OzAeZPNsLXk-unsplash.jpg" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-								This content is a little bit longer.</p>
-							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+						<div class="row g-0">
+							<div class="col-md-4">
+								<div class="savedpetimageholder">
+									<img src="./public/images/max-baskakov-OzAeZPNsLXk-unsplash.jpg" class="img-fluid" alt="...">
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<i class="savedhearticon"><button>Unsave</button></i>
+									<h5 class="card-title">{{name}}</h5>
+									<ul class="card-text" style="list-style: none;">
+										<li>{{gender}}</li>
+										<li>{{breed}}</li>
+										<li>{{age}}</li>
+									</ul>
+									<p class="card-text"><small class="text-muted">last viewed {{date}}</small></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-3">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<div class="savedpetimageholder">
+									<img src="./public/images/max-baskakov-OzAeZPNsLXk-unsplash.jpg" class="img-fluid" alt="...">
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<i class="savedhearticon"><button>Unsave</button></i>
+									<h5 class="card-title">{{name}}</h5>
+									<ul class="card-text" style="list-style: none;">
+										<li>{{gender}}</li>
+										<li>{{breed}}</li>
+										<li>{{age}}</li>
+									</ul>
+									<p class="card-text"><small class="text-muted">last viewed {{date}}</small></p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
