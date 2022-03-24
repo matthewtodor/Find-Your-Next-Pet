@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/Ccatalyst/Find-Your-Next-Pet#readme",
   "dependencies": {
+    "@petfinder/petfinder-js": "^1.0.6",
+    "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.2",
     "dotenv": "^16.0.0",
