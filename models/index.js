@@ -1,4 +1,4 @@
-const Pets = require("./Pets");
+const Pets = require("./SavedPets");
 const Users = require("./Users");
 
 module.export = Pets;
