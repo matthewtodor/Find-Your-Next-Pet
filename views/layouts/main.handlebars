@@ -48,7 +48,14 @@
 			<button type="button" class="btn btn-primary">Register</button>
 		</div>
 	</header>
-
+	<nav>
+		<a href="/">Home</a>
+    {{#if loggedIn}}
+    <button id="logout" class="btn-no-style">Logout</button>
+    {{else}}
+    <a href="/login">Login</a>
+    {{/if}}
+	</nav>
 	<main>
 
         {{{body}}}
@@ -62,7 +69,7 @@
 
 
 {{!-- sign-up modal --}}
-<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignup">
+{{!-- <div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignup">
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-5 shadow">
       <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -88,10 +95,10 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 {{!-- signin-modal --}}
-<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+{{!-- <div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-5 shadow">
       <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -117,7 +124,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 <!-- Jquery Script -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
