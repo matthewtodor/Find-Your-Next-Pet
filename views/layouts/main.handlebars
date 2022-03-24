@@ -25,11 +25,7 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<!-- custom CSS -->
-	<link rel="stylesheet" href="./public/CSS/style.css">
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script
-      src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"
-    ></script>
+	<link rel="stylesheet" href="/CSS/style.css">
 
 	<title>Find Your Next Pet - Home</title>
 	<link rel="icon" type="image/x-icon" href="./public/images/favicon.png">
@@ -53,23 +49,9 @@
 		</div>
 	</header>
 
-	<div class="container col-xxl-8 px-4 py-5 hero">
-		{{herotile}}
-	</div>
-
 	<main>
-		<section class="row container d-flex flex-wrap py-3 mb-4">
-			{{petdetails}}
+		{{{body}}}
 
-			<div id="savedpetscontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
-				<div class="col-12" id="savedpetsheader">
-					<h3>Your Saved Pets</h3>
-				</div>
-				<div id="savedpetslist" style="overflow:auto;">
-					{{savedpetscards}}
-				</div>
-			</div>
-		</section>
 	</main>
 
 	<footer class="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
