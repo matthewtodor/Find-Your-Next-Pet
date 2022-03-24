@@ -1,0 +1,36 @@
+<section class="row container d-flex flex-wrap py-3 mb-4"></section>
+	<div id="petdetailcontainer" class="col-12 col-lg-6 col-xxl-5 p-2 m-1">
+		<div class="col-12"><img id="petdetailimg" class="col-6" src="./public/images/ryan-walton-uKtvYMGe8ls-unsplash.jpg" alt="dog"></div>
+		<div id="petdetailname" class="col-12"><h3>{{name}} - <i class="savedhearticondetail"><button>Save</button></i></h3></div>
+		<div id="petdetailtext" class="col-12"><ul class="herolist" style="list-style: none;">
+			
+			<li>
+				{{type | species}}
+			</li>
+			<li>
+				{{breed}}
+			</li>
+			<li>
+				{{gender}}
+			</li>
+			<li>
+				{{age}}
+			</li>
+			<li>
+				<p>{{description}}</p>
+			</li>
+			<li>
+				{{location}}
+			</li>
+		</ul></div>
+	</div>
+
+	<div id="savedpetscontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
+		<div class="col-12" id="savedpetsheader">
+			<h3>Your Saved Pets</h3>
+		</div>
+		<div id="savedpetslist" style="overflow:auto;">
+			{{savedpetscards}}
+		</div>
+	</div>
+</section>
