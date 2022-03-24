@@ -1,0 +1,190 @@
+<section class="row container d-flex flex-wrap py-3 mb-4">
+	<div id="searcharea" class="d-inline-flex flex-wrap">
+		<fieldset>
+			<legend>Shelter Search</legend>
+			<div class="col-12 d-flex flex-wrap justify-content-around controlgroup">
+				
+				<div class="searchtypes">
+					<label for="pet-type" class="ui-controlgroup-label"><h4>Pet Types</h4></label>
+					<div class="p-2 m-1 form-check form-switch" id="pet-type-choice">
+						<input class="form-check-input" type="checkbox" value="dogtrue" id="typedog">
+						<label class="form-check-label" for="typedog">Search for Dogs</label>
+						<input class="form-check-input" type="checkbox" value="cattrue" id="typecat">
+						<label class="form-check-label" for="typecat">Search for Cat</label>
+						<input class="form-check-input" type="checkbox" value="othertrue" id="typeother">
+						<label class="form-check-label" for="typeother">Include Other Animal Types</label>
+					</div>
+				</div>
+				<div class="searchtypes">
+					<label for="pet-age" class="ui-controlgroup-label">Pet Age</label>
+					<div class="p-2 m-1 form-check form-switch" id="pet-age-choice">
+						<input class="form-check-input" type="checkbox" value="babytrue" id="baby">
+						<label class="form-check-label" for="baby">Baby</label>
+						<input class="form-check-input" type="checkbox" value="youngtrue" id="young">
+						<label class="form-check-label" for="young">Young</label>
+						<input class="form-check-input" type="checkbox" value="adulttrue" id="adult">
+						<label class="form-check-label" for="adult">Adult</label>
+						<input class="form-check-input" type="checkbox" value="seniortrue" id="senior">
+						<label class="form-check-label" for="senior">Senior</label>
+					</div>
+				</div>
+
+				<div class="searchtypes">
+					<label for="pet-gender" class="ui-controlgroup-label">Pet Gender</label>
+					<div class="p-2 m-1 form-check form-switch" id="pet-gender-choice">
+						<input class="form-check-input" type="checkbox" value="maletrue" id="male">
+						<label class="form-check-label" for="male">Male</label>
+						<input class="form-check-input" type="checkbox" value="femaletrue" id="female">
+						<label class="form-check-label" for="female">Female</label>
+						<input class="form-check-input" type="checkbox" value="othertrue" id="other">
+						<label class="form-check-label" for="other">Other/Unkown</label>
+					</div>
+				</div>
+
+				<div class="searchtypes">
+					<label for="breedoption" class="ui-controlgroup-label">Animal Breed</label>
+					<input id="breedoption" class="ui-spinner-input">
+				</div>
+
+				<div class="searchtypes">
+					<label for="locationoption" class="ui-controlgroup-label">City</label>
+					<input id="locationoption" class="ui-spinner-input">
+				</div>
+
+				<div class="d-grid col-12 p-2 mx-auto">
+					<button class="btn btn-primary" type="button">Search</button>
+				</div>
+				
+			</div>
+		</fieldset>
+	</div>
+</section>
+
+<main class="container row d-flex flex-wrap">	
+	<!-- results and details -->
+		<div id="searchresultscontainer" class="col-12 col-lg-6 col-xxl-5 p-2 m-1">
+			<div class="col-12" id="searchheader">
+				<h3>Search Results</h3>
+			</div>
+			<div id="searchresults" style="overflow:auto;">
+				<div class="card mb-3">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<div class="savedpetimageholder">
+								<img src="./public/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg" class="img-fluid" alt="...">
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<i class="savedhearticon"><button>Save</button></i>
+								<h5 class="card-title">{{name}}</h5>
+								<ul class="card-text" style="list-style: none;">
+									<li>{{gender}}</li>
+									<li>{{breed}}</li>
+									<li>{{age}}</li>
+								</ul>
+								<p class="card-text"><small class="text-muted">{{location}}</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card mb-3">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<div class="savedpetimageholder">
+								<img src="./public/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg" class="img-fluid" alt="...">
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<i class="savedhearticon"><button>Save</button></i>
+								<h5 class="card-title">{{name}}</h5>
+								<ul class="card-text" style="list-style: none;">
+									<li>{{gender}}</li>
+									<li>{{breed}}</li>
+									<li>{{age}}</li>
+								</ul>
+								<p class="card-text"><small class="text-muted">{{location}}</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card mb-3">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<div class="savedpetimageholder">
+								<img src="./public/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg" class="img-fluid" alt="...">
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<i class="savedhearticon"><button>Save</button></i>
+								<h5 class="card-title">{{name}}</h5>
+								<ul class="card-text" style="list-style: none;">
+									<li>{{gender}}</li>
+									<li>{{breed}}</li>
+									<li>{{age}}</li>
+								</ul>
+								<p class="card-text"><small class="text-muted">{{location}}</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card mb-3">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<div class="savedpetimageholder">
+								<img src="./public/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg" class="img-fluid" alt="...">
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<i class="savedhearticon"><button>Save</button></i>
+								<h5 class="card-title">{{name}}</h5>
+								<ul class="card-text" style="list-style: none;">
+									<li>{{gender}}</li>
+									<li>{{breed}}</li>
+									<li>{{age}}</li>
+								</ul>
+								<p class="card-text"><small class="text-muted">{{location}}</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="petdetailcontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
+			<div class="col-12"><img id="petdetailimg" class="col-6"
+					src="./public/images/ryan-walton-uKtvYMGe8ls-unsplash.jpg" alt="dog"></div>
+			<div id="petdetailname" class="col-12">
+				<h3>{{name}} - <i class="savedhearticondetail"><button>Save</button></i></h3>
+			</div>
+			<div id="petdetailtext" class="col-12">
+				<ul class="herolist" style="list-style: none;">
+
+					<li>
+						{{type | species}}
+					</li>
+					<li>
+						{{breed}}
+					</li>
+					<li>
+						{{gender}}
+					</li>
+					<li>
+						{{age}}
+					</li>
+					<li>
+						<p>{{description}}</p>
+					</li>
+					<li>
+						{{location}}
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+	</section>
+</main>
