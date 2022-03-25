@@ -25,5 +25,5 @@ const searchButtonHandler = async function (event) {
   }
 };
 document
-  .querySelector("#searchBtn")
+  .querySelector("#searchbutton")
   .addEventListener("submit", searchButtonHandler);
