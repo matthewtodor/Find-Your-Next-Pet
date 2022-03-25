@@ -10,14 +10,11 @@
 body {
 	max-width: 100vw;
 	max-height: 100vh;
+	color: var(--color4);
 }
 
 header {
 	background-color: var(--color1);
-}
-
-header button {
-	font-size: large;
 }
 
 footer {
@@ -55,24 +52,21 @@ footer {
 	position: relative;
 }
 
-.login-card {
-	margin: 0 0 20px 0;
-	flex: 0 0 20%;
-	max-width: 50%;
-	padding: 5px;
-	border: 3px solid var(--dark);
-	border-radius: var(--border-radius);
-	border-style: double;
-	border-width: thick;
-	background-color: var(--color1);
-
-	color: var(--dark);
-  }
-
 .savedhearticon {
 	position: absolute;
 	right: 0;
 	padding-right: 1rem;
+}
+
+.form-check-input {
+	position: relative;
+}
+
+#pet-type-choice {
+	background-color: var(--color2);
+	margin: 2%;
+	padding: 2%;
+	border-radius: 16px;
 }
 
 #logo {
@@ -81,7 +75,7 @@ footer {
 
 #petdetailcontainer {
 	background-color: var(--color1);
-	max-height: 70vh;
+	height: fit-content;
 	border-radius: 3%;
 }
 
@@ -89,8 +83,13 @@ footer {
 	border-radius: 3%;
 }
 
+#searchresults,
 #savedpetslist {
-	max-height: 50vh;
+	max-height: 500px;
+}
+
+#searcharea {
+	color: var(--color5);
 }
 
 @media only screen and (min-width: 1200px) {
