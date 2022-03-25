@@ -27,7 +27,7 @@ router.get("/:id", async (req, res) => {
 	}
 });
 
-router.post("/", withAuth, async (req, res) => {
+router.post("/", async (req, res) => {
 	try {
 		const savePet = await SavedPets.create({
 			id: req.session.pets.id,
@@ -49,7 +49,7 @@ router.post("/", withAuth, async (req, res) => {
 	}
 });
 
-router.delete("/", withAuth, async (req, res) => {
+router.delete("/", async (req, res) => {
 	try {
 		const savedPetCard = SavedPets.destroy({
 			where: {
