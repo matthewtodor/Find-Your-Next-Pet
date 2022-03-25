@@ -4,16 +4,16 @@ const SavedPets = require("../../models");
 
 router.get("/", async (req, res) => {
 	try {
-		const petDB = await SavedPets.findAll();
-		res.json(petDB);
-		res.render("savedpetcards");
+		// const petDB = await SavedPets.findAll();
+		// res.json(petDB);
+		res.render("savedpets");
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
 	}
 });
 
-router.get("pets/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
 	try {
 		const petDetails = await SavedPets.findByPk(req.params.id);
 

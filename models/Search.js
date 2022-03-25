@@ -49,7 +49,7 @@ SearchedPets.init(
 		sequelize,
 		freezeTableName: true,
 		underscored: true,
-		modelName: "searchPets",
+		modelName: "searchedPets",
 	}
 );
 module.exports = SearchedPets;
