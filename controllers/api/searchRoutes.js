@@ -2,11 +2,11 @@ const router = require("express").Router();
 const { SearchedPets } = require("../../models/Search");
 
 router.get("/", async (req, res) => {
-  try {
-    res.render("searchpage");
-  } catch (err) {
-    res.status(500).json(err);
-  }
+	try {
+		res.render("searchpage");
+	} catch (err) {
+		res.status(500).json(err);
+	}
 });
 
 // router.post("/", async (req, res) => {
