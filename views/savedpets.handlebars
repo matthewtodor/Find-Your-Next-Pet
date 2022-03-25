@@ -1,29 +1,29 @@
 <section class="row container d-flex flex-wrap py-3 mb-4"></section>
 	<div id="petdetailcontainer" class="col-12 col-lg-6 col-xxl-5 p-2 m-1">
-		<div class="col-12"><img id="petdetailimg" class="col-6" src="{{animals.photos[0].full}}" alt="{{animals.description}}"></div>
-		<div id="petdetailname" class="col-12"><h3>{{animals.name}} - <i class="savedhearticondetail"><button>Save</button></i></h3></div>
+		<div class="col-12"><img id="petdetailimg" class="col-6" src="{{pets.photo}}" alt="{{pets.description}}"></div>
+		<div id="petdetailname" class="col-12"><h3>{{pets.name}} - <i class="savedhearticondetail"><button>Save</button></i></h3></div>
 		<div id="petdetailtext" class="col-12"><ul class="herolist" style="list-style: none;">
 			
 			<li>
-				{{animals.species}}
+				{{pets.species}}
 			</li>
 			<li>
-				{{animals.breed.primary}}
+				{{pets.breed.primary}}
 			</li>
 			<li>
-				{{animals.gender}}
+				{{pets.gender}}
 			</li>
 			<li>
-				{{animals.age}}
+				{{pets.age}}
 			</li>
 			<li>
-				<p>{{animals.description}}</p>
+				<p>{{pets.description}}</p>
 			</li>
 			<li>
-				{{animals.contact.address.postcode}}
+				{{pets.contact.address.postcode}}
 			</li>
 			<li>
-				{{animals._links.organization}}
+				{{pets._links.organization}}
 			</li>
 		</ul></div>
 	</div>
