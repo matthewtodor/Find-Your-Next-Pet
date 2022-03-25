@@ -49,4 +49,22 @@ router.post("/", withAuth, async (req, res) => {
 	}
 });
 
+router.delete("/", withAuth, async (req, res) => {
+	try {
+		const savedPetCard = SavedPets.destroy({
+			where: {
+				id: req.params.id,
+			},
+		});
+
+		if (!savedPetCard) {
+			res.status(404).json({ message: "No pet found with that id!" });
+			return;
+		}
+		res.status(200).json(savedPetCard);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 module.exports = router;
