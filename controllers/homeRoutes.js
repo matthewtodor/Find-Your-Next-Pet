@@ -8,9 +8,9 @@ async function GetPetsFromAPI(req, type, limit) {
 		secret: process.env.SECRET,
 	});
 	const pets = req.session.pets;
-	console.log("this is what we got" + pets);
+	// console.log("this is what we got" + pets);
 	if (!pets?.length) {
-		console.log("we made it");
+		// console.log("we made it");
 		await pf.animal
 			.search({
 				type, //become a variable
@@ -29,14 +29,14 @@ async function GetPetsFromAPI(req, type, limit) {
 			})
 			.catch((err) => console.log(err));
 	} else {
-		console.log("not using api", pets[0]);
+		// console.log("not using api", pets[0]);
 		return req.session.pets;
 	}
 }
 
 router.get("/", async (req, res) => {
 	const pets = await GetPetsFromAPI(req, "cat", 5);
-	console.log(pets?.length);
+	// console.log(pets?.length);
 	res.render("landingpage");
 });
 
