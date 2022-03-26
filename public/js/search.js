@@ -10,21 +10,9 @@ const searchButtonHandler = async function (event) {
     : (keyCheckedValue = "");
 
   console.log(keyCheckedValue);
-  // keyCheckedValue = ''
 
-  // if (keyCheckedValue === true) {
-  // 	keyCheckedValue = 'dogs';
-  // } if else (keyCheckedValue === false) {
-  // 	keyCheckedValue = 'cats'
-  // }
-
-  //   if (dogCheck === "dogtrue") {
-  //     type = "dog";
-  //   } else if (catCheck === "cattrue") {
-  //     type = "cat";
-  //   } else {
-  //     type = "";
-  //   }
+  const limitCheck = await document.querySelector("#valueNum");
+  console.log(limitCheck);
 
   const response = await fetch("/api/search", {
     method: "POST",
