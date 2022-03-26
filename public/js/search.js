@@ -26,9 +26,10 @@ const searchButtonHandler = async function (event) {
   console.log("we got there");
   console.log(response);
   if (response.ok) {
-    document.location.reload();
+    console.log("please come back to me baby");
+    // document.location.reload();
   } else {
-    alert("something went wrong");
+    console.log("something went wrong");
   }
 };
 document
