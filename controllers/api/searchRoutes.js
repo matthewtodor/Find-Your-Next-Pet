@@ -2,18 +2,18 @@ const router = require("express").Router();
 const { SearchedPets } = require("../../models/Search");
 
 router.get("/", async (req, res) => {
-	try {
-		res.render("searchpage");
-	} catch (err) {
-		res.status(500).json(err);
-	}
+  try {
+    res.render("searchpage");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-// router.post("/", async (req, res) => {
+// router.get("/", async (req, res) => {
 //   let sessionIndex = req.session.pets;
 //   // console.log("this is on the search route", req.session.pets[0]);
 //   try {
-//     const newSearch = await SearchedPets.create({
+//     const newSearch = await SearchedPets.findall({
 //       type: sessionIndex.type,
 //       breeds: sessionIndex.breeds[0],
 //       age: sessionIndex.age,
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 //       size: sessionIndex.size,
 //       name: sessionIndex.name,
 //       description: sessionIndex.description,
-//       photo: sessionIndex.photos[3],
+//       photo: sessionIndex.primary_photo_cropped.full,
 //       status: sessionIndex.status,
 //       published_at: sessionIndex.published_at,
 //       contact: sessionIndex.contact,
