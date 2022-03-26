@@ -11,18 +11,21 @@ const searchButtonHandler = async function (event) {
 
   console.log(keyCheckedValue);
 
-  const limitCheck = await document.querySelector("#valueNum");
-  console.log(limitCheck);
+  const limitCheck = await document.querySelector("#limitCheck");
+  console.log(limitCheck.value);
 
-  const response = await fetch("/api/search", {
+  const response = fetch("/api/search", {
     method: "POST",
     body: JSON.stringify({
+      keyCheck: keyCheckedValue,
+      limitCheck: limitCheck.value,
       // typeValue: type,
     }),
     headers: { "Content-Type": "application/json" },
   });
+  console.log("we got there");
   if (response.ok) {
-    document.location.replace("/seachpage");
+    document.location.reload();
   } else {
     alert("something went wrong");
   }
