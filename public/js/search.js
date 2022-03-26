@@ -24,6 +24,7 @@ const searchButtonHandler = async function (event) {
     headers: { "Content-Type": "application/json" },
   });
   console.log("we got there");
+  console.log(response);
   if (response.ok) {
     document.location.reload();
   } else {

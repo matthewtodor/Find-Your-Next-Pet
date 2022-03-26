@@ -37,12 +37,17 @@ router.post("/", async (req, res) => {
     let type = req.body.keyCheck;
     let limit = req.body.limitCheck;
     const petSearchCall = await GetPetsFromAPI(req, type, limit);
-    const searchCall = petSearchCall.map((search) => {
-      search.get({ plain: true });
-    });
-    res.render("searchresults-details", { searchCall });
+    // console.log("hello mom look at me ", petSearchCall);
+    // const searchCall = petSearchCall.map((search) => {
+    //   console.log("hello wtf?");
+    //   console.log(searchCall);
+    //   return res.json(search);
+    // });
+    const results = petSearchCall.get({ plain: true });
+    console.log(results);
+    res.render("searchpage", { results });
   } catch (err) {
-    res.status(500).json("this error", err);
+    res.status(500).json(err);
   }
 });
 
