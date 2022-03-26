@@ -52,14 +52,21 @@
 			</div>
 
 			<div id="searchresults" style="overflow:auto;">
-
-				
+			{{#each petSearchCall as |results|}}
+			{{> searchresults-details}}
+			
+			
+			
 			</div>
+
+			
 		</div>
+
+
 
 		<div id="petdetailcontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
 			<div class="col-12"><img id="petdetailimg" class="col-6"
-					src="./public/images/ryan-walton-uKtvYMGe8ls-unsplash.jpg" alt="dog"></div>
+					src={{petSearchCall.[0].primary_photo_cropped.full}} alt="dog"></div>
 			<div id="petdetailname" class="col-12">
 				{{!-- TODO: when saved, fa-regular in class changes to fa-solid --}}
 				<h3>{{name}} - <i type="button" class="fa-regular fa-heart"></i></h3>
@@ -69,7 +76,7 @@
 
 
 					<li>
-						{{breed}}
+						{{breed.primary}}
 					</li>
 					<li>
 						{{gender}}
@@ -81,13 +88,13 @@
 						<p>{{description}}</p>
 					</li>
 					<li>
-						{{location}}
+						{{contact.email}}
 					</li>
 				</ul>
 			</div>
 		</div>
 
-
+{{/each}}
 	</section>
 </main>
 
