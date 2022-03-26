@@ -16,28 +16,18 @@ async function GetPetsFromAPI(req, type, limit) {
     secret: process.env.SECRET,
   });
   const pets = req.session.pets;
-  // console.log("this is what we got" + pets);
   if (!pets?.length) {
-    // console.log("we made it");
     await pf.animal
       .search({
-        type, //become a variable
-        // breed: searchBreed,
-        // page,
+        type,
         limit,
       })
       .then(function (response) {
-        // console.log(response.data);
-        // Do something with `response.data.animals`
         req.session.pets = response.data.animals;
         return response.data.animals;
-        // new SavedPets = await SavedPet.create({
-        // photo: response.data.photo[0]
-        // })
       })
       .catch((err) => console.log(err));
   } else {
-    // console.log("not using api", pets[0]);
     return req.session.pets;
   }
 }
@@ -47,7 +37,10 @@ router.post("/", async (req, res) => {
     let type = req.body.keyCheck;
     let limit = req.body.limitCheck;
     const petSearchCall = await GetPetsFromAPI(req, type, limit);
-    res.render("searchpage", { petSearchCall });
+    const searchCall = petSearchCall.map((search) => {
+      search.get({ plain: true });
+    });
+    res.render("searchresults-details", { searchCall });
   } catch (err) {
     res.status(500).json("this error", err);
   }
