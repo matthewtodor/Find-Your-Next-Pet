@@ -53,23 +53,30 @@
 
 			
 			<div id="searchresults" style="overflow:auto;">
-
-				
+			{{#each petSearchCall as |results|}}
+			{{> searchresults-details}}
+			
+			
+			
 			</div>
+
+			
 		</div>
+
+
 
 		<div id="petdetailcontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
 			<div class="col-12"><img id="petdetailimg" class="col-6"
-					src="./public/images/ryan-walton-uKtvYMGe8ls-unsplash.jpg" alt="dog"></div>
+					src={{petSearchCall.[0].primary_photo_cropped.full}} alt="dog"></div>
 			<div id="petdetailname" class="col-12">
-				<h3>{{name}} - <i class="savedhearticondetail"><button>Save</button></i></h3>
+				<h3>{{petSearchCall.[0].name}} - <i class="savedhearticondetail"><button>Save</button></i></h3>
 			</div>
 			<div id="petdetailtext" class="col-12">
 				<ul class="herolist" style="list-style: none;">
 
 
 					<li>
-						{{breed}}
+						{{breed.primary}}
 					</li>
 					<li>
 						{{gender}}
@@ -81,13 +88,13 @@
 						<p>{{description}}</p>
 					</li>
 					<li>
-						{{location}}
+						{{contact.email}}
 					</li>
 				</ul>
 			</div>
 		</div>
 
-
+{{/each}}
 	</section>
 </main>
 
