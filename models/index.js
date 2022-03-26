@@ -1,5 +1,8 @@
 const Pets = require("./SavedPets");
 const User = require("./User");
+const UserSearch = require("./UserSearch");
 
-// module.export = Pets;
-module.export = { User, Pets };
+
+
+
+module.export = { User, Pets, UserSearch };
