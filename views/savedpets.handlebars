@@ -1,7 +1,10 @@
 <section class="row container d-flex flex-wrap py-3 mb-4"></section>
 	<div id="petdetailcontainer" class="col-12 col-lg-6 col-xxl-5 p-2 m-1">
 		<div class="col-12"><img id="petdetailimg" class="col-6" src="{{pets.primary_photo_cropped.full}}" alt="{{pets.description}}"></div>
-		<div id="petdetailname" class="col-12"><h3>{{pets.name}} - <i class="savedhearticondetail"><button>Save</button></i></h3></div>
+
+	{{!-- heart shaped save button save button --}}
+		<div id="petdetailname" class="col-12"><h3>{{pets.name}} - <i type="button" class="fa-solid fa-heart"></i></h3></div>
+
 		<div id="petdetailtext" class="col-12"><ul class="herolist" style="list-style: none;">
 			
 			<li>

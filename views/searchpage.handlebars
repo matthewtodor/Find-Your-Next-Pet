@@ -1,4 +1,4 @@
-<section class="row container d-flex flex-wrap py-3 mb-4">
+<section class="row container d-flex flex-wrap py-3 mb-4 justify-content-center">
 	<div id="searcharea" class="d-inline-flex flex-wrap">
 		<fieldset>
 			<legend>Shelter Search</legend>
@@ -36,7 +36,7 @@
 				</div>
 
 				<div class="d-grid col-12 p-2 mx-auto">
-					<button class="btn btn-primary" id="searchbutton" type="button">Search</button>
+					<button class="button" id="searchbutton" type="button">Search</button>
 				</div>
 
 			</div>
@@ -51,7 +51,6 @@
 				<h3>Search Results</h3>
 			</div>
 
-			
 			<div id="searchresults" style="overflow:auto;">
 
 				
@@ -62,7 +61,8 @@
 			<div class="col-12"><img id="petdetailimg" class="col-6"
 					src="./public/images/ryan-walton-uKtvYMGe8ls-unsplash.jpg" alt="dog"></div>
 			<div id="petdetailname" class="col-12">
-				<h3>{{name}} - <i class="savedhearticondetail"><button>Save</button></i></h3>
+				{{!-- TODO: when saved, fa-regular in class changes to fa-solid --}}
+				<h3>{{name}} - <i type="button" class="fa-regular fa-heart"></i></h3>
 			</div>
 			<div id="petdetailtext" class="col-12">
 				<ul class="herolist" style="list-style: none;">

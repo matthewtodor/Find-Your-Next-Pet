@@ -125,13 +125,14 @@ header .button {
 .form-check-input {
 	position: relative;
 }
-#details {
+#details_button {
 	color: var(--color5) !important;
 }
-#details:hover {
+#details_button:hover {
 	filter: brightness(85%);
 	color: var(--color5);
 }
+
 #pet-type-choice {
 	background-color: var(--color2);
 	margin: 2%;
@@ -159,6 +160,11 @@ header .button {
 }
 
 #searcharea {
+	color: var(--color5);
+}
+#searchbutton {
+	background-color: var(--color2);
+	border: 2px solid var(--color5);
 	color: var(--color5);
 }
 
