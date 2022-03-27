@@ -37,23 +37,25 @@
 		<title>Find Your Next Pet - Home</title>
 		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
 	</head>
-
-	<body class="container col-xxl-8 px-4 py-5">
-		<header class="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-			<a href="/" {{! class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" }}>
-				<img class="bi me-2" id="logo" role="img" src="/images/site icon.png" alt="Find Your Next Pet Logo" />
+	{{! TODO: adjust all styles to be mobile first design }}
+	<body class="container col-12 col-md-10 col-xxl-8 px-4 py-5">
+		<header
+			class="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-start justify-content-lg-center py-3 mb-4 border-bottom"
+		>
+			<a href="/" class="align-items-center col-12 col-md-2 mb-2 mb-md-0 text-dark text-decoration-none">
+				<img id="logo" role="img" src="/images/site icon.png" alt="Find Your Next Pet Logo" />
 			</a>
 
-			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-				<li><a href="/" class="navigationbutton">Home</a></li>
-				<li><a href="/api/search" class="navigationbutton">Pet Search</a></li>
-				<li><a href="/api/pets" class="navigationbutton">Saved Pets</a></li>
+			<ul class="nav d-flex col-12 col-md-8 col-lg-4 mb-2 justify-content-center justify-content-md-start mb-md-0">
+				<li class="col-12 col-md-4"><a href="/" class="navigationbutton">Home</a></li>
+				<li class="col-12 col-md-4"><a href="/api/search" class="navigationbutton">Pet Search</a></li>
+				<li class="col-12 col-md-4"><a href="/api/pets" class="navigationbutton">Saved Pets</a></li>
 			</ul>
 
-			<div class="col-md-3 text-end">
-				<a href="/login" class="button">Login</a>
-				<a href="/login" class="button">Register</a>
-				<button id="logout" class="button">Logout</button>
+			<div class="d-flex flex-wrap col-12 col-lg-4 text-end align-items-center justify-content-center">
+				<a href="/login" class="col-12 col-md-3 col-lg-3 mb-1 mx-md-1 mb-md-0 button">Login</a>
+				<a href="/login" class="col-12 col-md-3 col-lg-3 mb-1 mx-md-1 mb-md-0 button">Register</a>
+				<button id="logout" class="col-12 col-md-3 col-lg-3 mb-1 mx-md-1 mb-md-0 button">Logout</button>
 
 			</div>
 		</header>

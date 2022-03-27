@@ -1,5 +1,5 @@
 <section class="row container d-flex flex-wrap py-3 mb-4 justify-content-center">
-	<div id="searcharea" class="d-inline-flex flex-wrap">
+	<div id="searcharea" class="d-inline-flex flex-wrap justify-content-center">
 		<fieldset>
 			<legend>Shelter Search</legend>
 			<div class="col-12 d-flex flex-wrap justify-content-around controlgroup" id="pet-type-choice">
@@ -52,10 +52,9 @@
 			</div>
 
 			<div id="searchresults" style="overflow:auto;">
-			{{!-- {{#each petSearchCall as |results|}} --}}
-			{{!-- {{> searchresults-details}} --}}
-			{{!-- {{/each}} --}}
-			
+			{{#each petSearchCall as |results|}}
+			{{> searchresults-details}}
+			{{/each}}
 			
 			
 			</div>
@@ -95,7 +94,8 @@
 			</div>
 		</div>
 
-</section>
+
+	</section>
 
 
 <script src="/js/search.js"></script>
