@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const petfinder = require("@petfinder/petfinder-js");
-const { SearchedPets, UserSearch } = require("../../models");
+const { SearchedPets } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -38,25 +38,27 @@ router.post("/", async (req, res) => {
   let type = req.body.keyCheck;
   let limit = req.body.limitCheck;
   const petSearchCall = await GetPetsFromAPI(req, type, limit);
-  console.log("look ma we got some data ---", petSearchCall[0]);
+  // console.log("look ma we got some data ---", petSearchCall[0]);
   // res.status(200).json({ data: petSearchCall });
   console.log("before the catch");
+  console.log(petSearchCall.length);
+  for (var i = 0; i < petSearchCall.length; i++) {
+    const data = await SearchedPets.create({
+      type: petSearchCall[i].type,
+      breeds: petSearchCall[i].breeds.primary,
+      age: petSearchCall[i].age,
+      gender: petSearchCall[i].gender,
+      size: petSearchCall[i].size,
+      name: petSearchCall[i].name,
+      description: petSearchCall[i].description,
+      photo: petSearchCall[i].primary_photo_cropped,
+      status: petSearchCall[i].status,
+      published_at: petSearchCall[i].published_at,
+      contact: petSearchCall[i].contact.email,
+    });
 
-  SearchedPets.create({
-    type: petSearchCall[0].type,
-    breeds: petSearchCall[0].breeds.primary,
-    age: petSearchCall[0].age,
-    gender: petSearchCall[0].gender,
-    size: petSearchCall[0].size,
-    name: petSearchCall[0].name,
-    description: petSearchCall[0].description,
-    photo: petSearchCall[0].primary_photo_cropped,
-    status: petSearchCall[0].status,
-    published_at: petSearchCall[0].published_at,
-    contact: petSearchCall[0].contact.email,
-  }).then((data) => {
-    res.json(data);
-  });
+    console.log(data);
+  }
 
   // return res.json(petSearchCall);
   // res.status(200).json(petSearchCall);
