@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const petfinder = require("@petfinder/petfinder-js");
+const sequelize = require("../../config/connection");
 const { SearchedPets } = require("../../models");
 
 router.get("/", async (req, res) => {
@@ -10,9 +11,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-
 router.post("/", async (req, res) => {
-
   function GetPetsFromAPI(type, limit) {
     const pf = new petfinder.Client({
       apiKey: process.env.API_KEY,
@@ -25,6 +24,7 @@ router.post("/", async (req, res) => {
       })
       .then(function (response) {
         const search = response.data.animals;
+        SearchedPets.truncate();
         search.forEach((pet) =>
           SearchedPets.create({
             type: pet.type,
@@ -34,11 +34,10 @@ router.post("/", async (req, res) => {
             size: pet.size,
             name: pet.name,
             description: pet.description,
-            // photo: pet.primary_photo_cropped.full,
+            photo: pet.primary_photo_cropped?.full,
             status: pet.status,
             published_at: pet.published_at,
             contact: pet.contact.email,
-            // console.log("look at me -----------------", searchArr);
           })
         );
       })
@@ -49,7 +48,7 @@ router.post("/", async (req, res) => {
   let type = req.body.keyCheck;
   let limit = req.body.limitCheck;
   await GetPetsFromAPI(type, limit);
-  
+
   // return res.render("searchpage", { petSearchCall });
   // } catch (err) {
   //   console.log(err);
@@ -57,6 +56,5 @@ router.post("/", async (req, res) => {
   //   res.status(500).json(err);
   // }
 });
-
 
 module.exports = router;
