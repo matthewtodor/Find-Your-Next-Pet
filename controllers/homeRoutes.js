@@ -7,11 +7,15 @@ async function GetPetsFromAPI(req, type, limit) {
     apiKey: process.env.API_KEY,
     secret: process.env.SECRET,
   });
+  // console.log("look at me ----------");
+  // console.log(pf.animal.search("cat", 5));
+
   const pets = req.session.pets;
+  // console.log(pets);
   if (!pets?.length) {
     await pf.animal
       .search({
-        type, 
+        type,
         limit,
       })
       .then(function (response) {
@@ -25,7 +29,8 @@ async function GetPetsFromAPI(req, type, limit) {
 }
 
 router.get("/", async (req, res) => {
-  const pets = await GetPetsFromAPI(req, "cat", 5);
+  const petsfromhome = await GetPetsFromAPI(req, "dog", 1);
+  console.log(petsfromhome);
   res.render("landingpage");
 });
 
