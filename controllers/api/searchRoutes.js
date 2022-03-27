@@ -38,10 +38,14 @@ router.post("/", async (req, res) => {
     let type = req.body.keyCheck;
     let limit = req.body.limitCheck;
     const petSearchCall = await GetPetsFromAPI(req, type, limit);
-    // console.log("look ma we got some data ---", petSearchCall);
+    console.log("look ma we got some data ---", petSearchCall[0]);
+    // res.status(200).json({ data: petSearchCall });
+    console.log("before the catch");
+    
+    return res.json(petSearchCall);
+    // res.status(200).json(petSearchCall);
 
-    res.render("searchpage", { petSearchCall });
-    return console.log("before the catch");
+    // return res.render("searchpage", { petSearchCall });
   } catch (err) {
     console.log(err);
     console.log("something went wrong server side");
