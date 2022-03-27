@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const petfinder = require("@petfinder/petfinder-js");
-const { SearchedPets, UserSearch } = require("../../models");
+const { SearchedPets } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -24,6 +24,7 @@ async function GetPetsFromAPI(req, type, limit) {
       })
       .then(function (response) {
         req.session.pets = response.data.animals;
+
         return response.data.animals;
       })
       .catch((err) => console.log(err));
@@ -33,17 +34,41 @@ async function GetPetsFromAPI(req, type, limit) {
 }
 
 router.post("/", async (req, res) => {
-  try {
-    let type = req.body.keyCheck;
-    let limit = req.body.limitCheck;
-    const petSearchCall = await GetPetsFromAPI(req, type, limit);
-    // console.log(petSearchCall);
-    res.render("searchpage", { petSearchCall });
-    return console.log("before the catch");
-  } catch (err) {
-    console.log("something went wrong server side");
-    res.status(500).json(err);
+  // try {
+  let type = req.body.keyCheck;
+  let limit = req.body.limitCheck;
+  const petSearchCall = await GetPetsFromAPI(req, type, limit);
+  // console.log("look ma we got some data ---", petSearchCall[0]);
+  // res.status(200).json({ data: petSearchCall });
+  console.log("before the catch");
+  console.log(petSearchCall.length);
+  for (var i = 0; i < petSearchCall.length; i++) {
+    const data = await SearchedPets.create({
+      type: petSearchCall[i].type,
+      breeds: petSearchCall[i].breeds.primary,
+      age: petSearchCall[i].age,
+      gender: petSearchCall[i].gender,
+      size: petSearchCall[i].size,
+      name: petSearchCall[i].name,
+      description: petSearchCall[i].description,
+      photo: petSearchCall[i].primary_photo_cropped,
+      status: petSearchCall[i].status,
+      published_at: petSearchCall[i].published_at,
+      contact: petSearchCall[i].contact.email,
+    });
+
+    console.log(data);
   }
+
+  // return res.json(petSearchCall);
+  // res.status(200).json(petSearchCall);
+
+  // return res.render("searchpage", { petSearchCall });
+  // } catch (err) {
+  //   console.log(err);
+  //   console.log("something went wrong server side");
+  //   res.status(500).json(err);
+  // }
 });
 
 // router.get("/", async (req, res) => {
