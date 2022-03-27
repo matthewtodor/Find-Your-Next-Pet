@@ -44,7 +44,7 @@
 	</div>
 </section>
 
-<main class="container row d-flex flex-wrap">	
+<section class="container row d-flex flex-wrap">	
 	<!-- results and details -->
 		<div id="searchresultscontainer" class="col-12 col-lg-6 col-xxl-5 p-2 m-1">
 			<div class="col-12" id="searchheader">
@@ -52,8 +52,9 @@
 			</div>
 
 			<div id="searchresults" style="overflow:auto;">
-			{{#each petSearchCall as |results|}}
-			{{> searchresults-details}}
+			{{!-- {{#each petSearchCall as |results|}} --}}
+			{{!-- {{> searchresults-details}} --}}
+			{{!-- {{/each}} --}}
 			
 			
 			
@@ -66,7 +67,7 @@
 
 		<div id="petdetailcontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
 			<div class="col-12"><img id="petdetailimg" class="col-6"
-					src={{petSearchCall.[0].primary_photo_cropped.full}} alt="dog"></div>
+					src="{{petSearchCall.[0].primary_photo_cropped.full}}" alt="dog"></div>
 			<div id="petdetailname" class="col-12">
 				{{!-- TODO: when saved, fa-regular in class changes to fa-solid --}}
 				<h3>{{name}} - <i type="button" class="fa-regular fa-heart"></i></h3>
@@ -94,8 +95,7 @@
 			</div>
 		</div>
 
-{{/each}}
-	</section>
-</main>
+</section>
+
 
 <script src="/js/search.js"></script>

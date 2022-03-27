@@ -25,12 +25,17 @@ const searchButtonHandler = async function (event) {
   });
   console.log("we got there");
   console.log(response);
-  if (response.ok) {
-    console.log("please come back to me baby");
-    // document.location.reload();
-  } else {
-    console.log("something went wrong");
-  }
+  response.then(function (data) {
+    if (data.ok) {
+      console.log("please come back to me baby");
+      console.log(data);
+      searchEl = document.getElementById("searchresults");
+      searchEl.innerHTML = "hello";
+      // document.location.reload();
+    } else {
+      console.log("something went wrong");
+    }
+  });
 };
 document
   .querySelector("#searchbutton")
