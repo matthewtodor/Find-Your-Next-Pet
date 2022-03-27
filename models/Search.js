@@ -46,15 +46,16 @@ SearchedPets.init(
     },
   },
   {
-    hooks: {
-      // Use the beforeCreate hook to work with data before a new instance is created
-      beforeCreate: async () => {
-        // In this case, we are taking the user's email address, and making all letters lower case before adding it to the database.
-        await sequelize.sync({
-          force: true,
-        });
-      },
-    },
+    // hooks: {
+    //   // Use the beforeCreate hook to work with data before a new instance is created
+    //   beforeCreate: async () => {
+    //     // In this case, we are taking the user's email address, and making all letters lower case before adding it to the database.
+
+    //     await sequelize.sync({
+    //       force: true,
+    //     });
+    //   },
+    // },
     sequelize,
     freezeTableName: true,
     underscored: true,
