@@ -1,13 +1,16 @@
 const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
+    console.log("I'm want to delete this one  ",  event.target.Id)
+    event.preventDefault();
 
-        const response = await fetch(`/api/pets/${id}`, {
+    if (event.target.matches(".unsaveBtn")) {
+    let btnElId = event.target.id;
+    const { id } = event.target.dataset;
+        const response = await fetch(`/api/pets/${{id}}`, {
         method: 'DELETE',
     });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/pets');
         } else {
             alert('Failed to delete project');
         }
@@ -15,5 +18,5 @@ const delButtonHandler = async (event) => {
 };
 
 document
-    .querySelector('.project-list')
+    .querySelector('.savedpetslist')
     .addEventListener('click', delButtonHandler);
