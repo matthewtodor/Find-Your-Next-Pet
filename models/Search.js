@@ -11,6 +11,9 @@ SearchedPets.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    pf_id: {
+      type: DataTypes.STRING, 
+    },
     type: {
       type: DataTypes.STRING,
     },

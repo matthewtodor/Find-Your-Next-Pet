@@ -29,8 +29,8 @@ async function GetPetsFromAPI(req, type, limit) {
 }
 
 router.get("/", async (req, res) => {
-  const petsfromhome = await GetPetsFromAPI(req, "dog", 1);
-  console.log(petsfromhome);
+  // const petsfromhome = await GetPetsFromAPI(req, "dog", 1);
+  // console.log(petsfromhome);
   res.render("landingpage");
 });
 
