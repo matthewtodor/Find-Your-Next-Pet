@@ -44,4 +44,18 @@
 	</div>
 </section>
 
-<script src="/js/search.js"></script>
+<section class="container row d-flex flex-wrap">	
+	<!-- results and details -->
+		<div id="searchresultscontainer" class="col-12 col-lg-6 col-xxl-5 p-2 m-1">
+			<div class="col-12" id="searchheader">
+				<h3>Search Results</h3>
+			</div>
+			<div id="searchresults" style="overflow:auto;">
+			{{#each petData as |results|}}
+			{{> searchresults-details}}
+			{{/each}}
+			</div>
+		</div>
+	</section>
+
+	<script src="/js/search.js"></script>
