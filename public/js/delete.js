@@ -18,5 +18,5 @@ const delButtonHandler = async (event) => {
 };
 
 document
-    .querySelector('.savedpetslist')
+    .querySelector('#savedpetscontainer')
     .addEventListener('click', delButtonHandler);

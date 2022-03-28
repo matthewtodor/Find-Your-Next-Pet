@@ -3,6 +3,7 @@ const req = require("express/lib/request");
 const { Pets, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+// gets all the users saved pets
 router.get("/", withAuth, async (req, res) => {
 	try {
 		const petDB = await Pets.findAll({
@@ -17,21 +18,7 @@ router.get("/", withAuth, async (req, res) => {
 		res.status(500).json(err);
 	}
 });
-// Get a pet that matches the id of the requested pet
-// router.get("/:id", async (req, res) => {
-// 	try {
-// 		// finds the pet by the primary key, which is id
-// 		const petDetails = await Pets.findByPk(req.params.id);
-// 		// if it 404s, return the message below
-// 		if (!petDetails) {
-// 			res.status(404).json({ message: "No pet found with that id!" });
-// 			return;
-// 		}
-// 		res.status(200).json(petDetails);
-// 	} catch (err) {
-// 		res.status(500).json(err);
-// 	}
-// });
+
 // creates a row for the saved pet with the included columns
 router.post("/", withAuth, async (req, res) => {
 	console.log("arrived at backend  ", req.session);
@@ -70,10 +57,11 @@ router.post("/", withAuth, async (req, res) => {
 		res.status(400).json(err);
 	}
 });
+
 // removes a pet from the saved pets list
 router.delete("/", async (req, res) => {
 	try {
-		const savedPetCard = Pets.destroy({
+		const savedPetCard = await Pets.destroy({
 			where: {
 				id: req.params.id,
 			},
