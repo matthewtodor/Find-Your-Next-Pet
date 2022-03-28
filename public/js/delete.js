@@ -1,11 +1,10 @@
 const delButtonHandler = async (event) => {
-    console.log("I'm want to delete this one  ",  event.target.Id)
     event.preventDefault();
 
     if (event.target.matches(".unsaveBtn")) {
     let btnElId = event.target.id;
-    const { id } = event.target.dataset;
-        const response = await fetch(`/api/pets/${{id}}`, {
+    console.log("Trying to delete  ", btnElId)
+            const response = await fetch(`/api/pets/${{btnElId}}`, {
         method: 'DELETE',
     });
 

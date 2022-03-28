@@ -60,6 +60,7 @@ router.post("/", withAuth, async (req, res) => {
 
 // removes a pet from the saved pets list
 router.delete("/", async (req, res) => {
+	console.log("I'm deleting an entry from the Pets DB")
 	try {
 		const savedPetCard = await Pets.destroy({
 			where: {
