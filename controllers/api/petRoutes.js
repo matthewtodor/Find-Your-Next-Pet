@@ -6,7 +6,9 @@ router.get("/", async (req, res) => {
 	try {
 		// const petDB = await SavedPets.findAll();
 		// res.json(petDB);
-		res.render("savedpets");
+		res.render("savedpets", {
+			loggedIn: req.session.loggedIn,
+		});
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
