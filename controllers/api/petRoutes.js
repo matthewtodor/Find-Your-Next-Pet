@@ -6,12 +6,16 @@ const withAuth = require("../../utils/auth");
 router.get("/", withAuth, async (req, res) => {
 	try {
 		const petDB = await Pets.findAll({
+<<<<<<< HEAD
 			include: [{ model: User, through: "user_saved" }],
+=======
+			include: [{ model: User, through: 'user_saved' }],
+>>>>>>> main
 		});
 		const pet = petDB.map((data) => data.get({ plain: true }));
 
 		// res.json(petDB);
-		res.render("savedpets", { pet });
+		res.render("savedpets", { pet, loggedIn: req.session.loggedIn });
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
@@ -65,8 +69,6 @@ router.post("/", withAuth, async (req, res) => {
 			res.status(200).json(userSavesPet);
 		}
 
-		// 3. make a  record in DB if does not exist, then
-		// get user info out of DB
 	} catch (err) {
 		console.log(err);
 		res.status(400).json(err);
