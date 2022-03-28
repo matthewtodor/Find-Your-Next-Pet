@@ -1,9 +1,9 @@
-	<div id="savedpetscontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
+	<div id="savedpetscontainer" class="col-12 p-2 m-1">
 		<div class="col-12" id="savedpetsheader">
 			<h3>Your Saved Pets</h3>
 		</div>
 		<div id="savedpetslist" style="overflow:auto;">
-			{{#each savedPet as |saved|}}
+			{{#each pet as |savedCard|}}
 			{{> savedpetcards-details}}
 			{{/each}}
 		</div>

@@ -77,7 +77,7 @@ header .button {
 	max-width: 30vw;
 }
 /* controls the appearance of the "see details" button in the landingpage.handlebars file */
-/* .details_button {
+.details_button {
 	display: inline-block;
 	color: var(--color5);
 	text-align: center;
@@ -96,10 +96,10 @@ header .button {
 	filter: brightness(80%);
 	text-decoration: none;
 	color: var(--color5);
-} */
+}
 
 .savedpetimageholder {
-	max-width: 5rem;
+	/* max-width: 5rem; */
 	position: relative;
 	padding-top: 5%;
 	padding-left: 5%;
@@ -152,11 +152,6 @@ header .button {
 
 #petdetailimg {
 	border-radius: 3%;
-}
-
-#searchresults,
-#savedpetslist {
-	max-height: 500px;
 }
 
 #searcharea {
