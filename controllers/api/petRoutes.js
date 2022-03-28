@@ -3,35 +3,35 @@ const req = require("express/lib/request");
 const { Pets, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
 	try {
-		const petDB = await User.findAll({
-			include: [{ model: Pets, through: user_saved }],
+		const petDB = await Pets.findAll({
+			include: [{ model: User, through: 'user_saved' }],
 		});
 		const pet = petDB.map((data) => data.get({ plain: true }));
 
 		// res.json(petDB);
-		res.render("savedpets", { pet });
+		res.render("savedpets", { pet, loggedIn: req.session.loggedIn });
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
 	}
 });
 // Get a pet that matches the id of the requested pet
-router.get("/:id", async (req, res) => {
-	try {
-		// finds the pet by the primary key, which is id
-		const petDetails = await Pets.findByPk(req.params.id);
-		// if it 404s, return the message below
-		if (!petDetails) {
-			res.status(404).json({ message: "No pet found with that id!" });
-			return;
-		}
-		res.status(200).json(petDetails);
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
+// router.get("/:id", async (req, res) => {
+// 	try {
+// 		// finds the pet by the primary key, which is id
+// 		const petDetails = await Pets.findByPk(req.params.id);
+// 		// if it 404s, return the message below
+// 		if (!petDetails) {
+// 			res.status(404).json({ message: "No pet found with that id!" });
+// 			return;
+// 		}
+// 		res.status(200).json(petDetails);
+// 	} catch (err) {
+// 		res.status(500).json(err);
+// 	}
+// });
 // creates a row for the saved pet with the included columns
 router.post("/", withAuth, async (req, res) => {
 	console.log("arrived at backend  ", req.session);
@@ -65,8 +65,6 @@ router.post("/", withAuth, async (req, res) => {
 			res.status(200).json(userSavesPet);
 		}
 
-		// 3. make a  record in DB if does not exist, then
-		// get user info out of DB
 	} catch (err) {
 		console.log(err);
 		res.status(400).json(err);

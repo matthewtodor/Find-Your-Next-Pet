@@ -154,11 +154,6 @@ header .button {
 	border-radius: 3%;
 }
 
-#searchresults,
-#savedpetslist {
-	max-height: 500px;
-}
-
 #searcharea {
 	color: var(--color5);
 }
