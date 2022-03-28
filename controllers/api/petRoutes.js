@@ -4,31 +4,33 @@ const { Pets, User } = require("../../models");
 const withAuth = require("..utils/auth");
 
 router.get("/", async (req, res) => {
-	try {
-		// const petDB = await Pets.findAll();
-		// res.json(petDB);
-		res.render("savedpets", {
-			loggedIn: req.session.loggedIn,
-		});
-	} catch (err) {
-		console.log(err);
-		res.status(500).json(err);
-	}
+  try {
+    const petDB = await User.findAll({
+      include: [{ model: Pets, through: user_saved }],
+    });
+    const pet = petDB.map((data) => data.get({ plain: true }));
+
+    // res.json(petDB);
+    res.render("savedpets", { pet });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 // Get a pet that matches the id of the requested pet
 router.get("/:id", async (req, res) => {
-	try {
-		// finds the pet by the primary key, which is id
-		const petDetails = await Pets.findByPk(req.params.id);
-		// if it 404s, return the message below
-		if (!petDetails) {
-			res.status(404).json({ message: "No pet found with that id!" });
-			return;
-		}
-		res.status(200).json(petDetails);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+  try {
+    // finds the pet by the primary key, which is id
+    const petDetails = await Pets.findByPk(req.params.id);
+    // if it 404s, return the message below
+    if (!petDetails) {
+      res.status(404).json({ message: "No pet found with that id!" });
+      return;
+    }
+    res.status(200).json(petDetails);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 // creates a row for the saved pet with the included columns
 router.post("/", withAuth, async (req, res) => {
@@ -72,12 +74,12 @@ router.post("/", withAuth, async (req, res) => {
 });
 // removes a pet from the saved pets list
 router.delete("/", async (req, res) => {
-	try {
-		const savedPetCard = Pets.destroy({
-			where: {
-				id: req.params.id,
-			},
-		});
+  try {
+    const savedPetCard = Pets.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
 
     if (!savedPetCard) {
       res.status(404).json({ message: "No pet found with that id!" });

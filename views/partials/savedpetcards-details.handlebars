@@ -2,19 +2,19 @@
 	<div class="row g-0">
 		<div class="col-md-4">
 			<div class="savedpetimageholder">
-				<img src="{{pets.photos[0].small}}" class="img-fluid" alt="{{pets.description}}">
+				<img src="{{photo}}" class="img-fluid" alt="{{description}}">
 			</div>
 		</div>
 		<div class="col-md-8">
 			<div class="card-body">
-				<i class="savedhearticon"><button id="{{pets.id}}">Unsave</button></i>
+				<i class="savedhearticon"><button id="{{id}}">Unsave</button></i>
 				<h5 class="card-title">{{pets.name}}</h5>
 				<ul class="card-text" style="list-style: none;">
-					<li>{{pets.gender}}</li>
-					<li>{{pets.breed.primary}}</li>
-					<li>{{pets.age}}</li>
+					<li>{{gender}}</li>
+					<li>{{breed}}</li>
+					<li>{{age}}</li>
 				</ul>
-				<p class="card-text"><small class="text-muted">{{pets.contact.address.postcode}}</small></p>
+				<p class="card-text"><small class="text-muted">{{contact}}</small></p>
 			</div>
 		</div>
 	</div>
