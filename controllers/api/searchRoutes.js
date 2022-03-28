@@ -2,6 +2,7 @@ const router = require("express").Router();
 const petfinder = require("@petfinder/petfinder-js");
 const sequelize = require("../../config/connection");
 const { SearchedPets } = require("../../models");
+const { route } = require("./resultsRoute");
 
 router.get("/", async (req, res) => {
   try {
@@ -55,7 +56,8 @@ router.post("/", async (req, res) => {
   let type = req.body.keyCheck;
   let limit = req.body.limitCheck;
   await GetPetsFromAPI(type, limit);
-  renderSearch(req, res);
+  console.log("DB seeded with search results")
+    // renderSearch(req, res);
 
   // return res.render("searchpage", { petSearchCall });
   // return res.render.json("searchpage", { SearchedPets });
@@ -66,12 +68,16 @@ router.post("/", async (req, res) => {
   // }
 });
 
-async function renderSearch(req, res) {
-  const dbPetData = await SearchedPets.findAll({});
-  const petData = dbPetData.map((pd) => pd.get({ plain: true }));
-  console.log("weeeeeeeeeeeeeeeeeeeeeeee");
-  console.log(petData);
-  return res.render("searchpage", { petData });
-}
+router.get('/results', async (req, res) => {
+  try {
+    const dbPetData = await SearchedPets.findAll({});
+    const petData = dbPetData.map((pd) => pd.get({ plain: true }));
+    console.log("weeeeeeeeeeeeeeeeeeeeeeee");
+    console.log(petData);
+    return res.render("searchresults", { petData });
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
 
 module.exports = router;
