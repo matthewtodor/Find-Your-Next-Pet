@@ -41,6 +41,13 @@ router.post("/", async (req, res) => {
           })
         );
       })
+      // .then(function (req, res) {
+      //   const dbPetData = SearchedPets.findAll({});
+      //   console.log("weeeeeeeeeeeeeeeeeeeeeeee");
+      //   console.log(dbPetData);
+      //   const petData = dbPetData.map((pd) => pd.get({ plain: true }));
+      //   res.render("searchpage", petData);
+      // })
       .catch((err) => console.log(err));
   }
 
@@ -48,13 +55,23 @@ router.post("/", async (req, res) => {
   let type = req.body.keyCheck;
   let limit = req.body.limitCheck;
   await GetPetsFromAPI(type, limit);
+  renderSearch(req, res);
 
   // return res.render("searchpage", { petSearchCall });
+  // return res.render.json("searchpage", { SearchedPets });
   // } catch (err) {
   //   console.log(err);
   //   console.log("something went wrong server side");
   //   res.status(500).json(err);
   // }
 });
+
+async function renderSearch(req, res) {
+  const dbPetData = await SearchedPets.findAll({});
+  const petData = dbPetData.map((pd) => pd.get({ plain: true }));
+  console.log("weeeeeeeeeeeeeeeeeeeeeeee");
+  console.log(petData);
+  return res.render("searchpage", { petData });
+}
 
 module.exports = router;
