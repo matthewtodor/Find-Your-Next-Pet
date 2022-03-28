@@ -67,17 +67,12 @@
 			{{{body}}}
 
 		</main>
-		{{#if loggedIn}}
-			<script src="/js/logout.js"></script>
-		{{/if}}
 		<footer class="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
 			<h4>Made by team...</h4>
 			<a href="https://github.com/Ccatalyst/Find-Your-Next-Pet" target="_blank" rel="noreferrer noopener"><h4>Check this site's Repo here:</h4></a>
 		</footer>
 
 
-		<script src="/js/login.js"></script>
-		<script src="/js/logout.js"></script>
 
 		<!-- Jquery Script -->
 		<script
@@ -110,5 +105,9 @@
 			crossorigin="anonymous"
 		></script>
 		
+		{{#if loggedIn}}
+		<script src="/js/logout.js"></script>
+		
+		{{/if}}
 	</body>
 </html>
