@@ -2,35 +2,6 @@
 	<div id="petdetailcontainer" class="col-12 col-lg-6 col-xxl-5 p-2 m-1">
 		<div class="col-12"><img id="petdetailimg" class="col-6" src="{{pets.primary_photo_cropped.full}}" alt="{{pets.description}}"></div>
 
-	{{!-- heart shaped save button save button --}}
-		<div id="petdetailname" class="col-12"><h3>{{pets.name}} - <i type="button" class="fa-solid fa-heart"></i></h3></div>
-
-		<div id="petdetailtext" class="col-12"><ul class="herolist" style="list-style: none;">
-			
-			<li>
-				{{pets.species}}
-			</li>
-			<li>
-				{{pets.breed.primary}}
-			</li>
-			<li>
-				{{pets.gender}}
-			</li>
-			<li>
-				{{pets.age}}
-			</li>
-			<li>
-				<p>{{pets.description}}</p>
-			</li>
-			<li>
-				{{pets.contact.address.postcode}}
-			</li>
-			<li>
-				{{pets._links.organization}}
-			</li>
-		</ul></div>
-	</div>
-
 	<div id="savedpetscontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
 		<div class="col-12" id="savedpetsheader">
 			<h3>Your Saved Pets</h3>
