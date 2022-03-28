@@ -11,6 +11,9 @@ SavedPets.init(
 			primaryKey: true,
 			autoIncrement: true,
 		},
+		pf_id: {
+			type: DataTypes.STRING, 
+		},
 		photo: {
 			type: DataTypes.STRING,
 		},

@@ -29,6 +29,7 @@ router.post("/", async (req, res) => {
         search.forEach((pet) =>
           SearchedPets.create({
             type: pet.type,
+            pf_id: pet.id,
             breeds: pet.breeds.primary,
             age: pet.age,
             gender: pet.gender,

@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const req = require("express/lib/request");
-const SavedPets = require("../../models");
+const { Pets, User } = require("../../models");
 
 router.get("/", async (req, res) => {
 	try {
-		// const petDB = await SavedPets.findAll();
+		// const petDB = await Pets.findAll();
 		// res.json(petDB);
 		res.render("savedpets");
 	} catch (err) {
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
 	try {
 		// finds the pet by the primary key, which is id
-		const petDetails = await SavedPets.findByPk(req.params.id);
+		const petDetails = await Pets.findByPk(req.params.id);
 		// if it 404s, return the message below
 		if (!petDetails) {
 			res.status(404).json({ message: "No pet found with that id!" });
@@ -29,30 +29,50 @@ router.get("/:id", async (req, res) => {
 });
 // creates a row for the saved pet with the included columns
 router.post("/", async (req, res) => {
+	console.log("arrived at backend  ", req.session)
 	try {
-		const savePet = await SavedPets.create({
-			id: req.session.pets.id,
-			type: req.session.pets.type,
-			breeds: req.session.pets.breeds[0],
-			age: req.session.pets.age,
-			gender: req.session.pets.gender,
-			size: req.session.pets.size,
-			name: req.session.pets.name,
-			description: req.session.pets.description,
-			photo: req.session.pets.photos[3],
-			status: req.session.pets.status,
-			published_at: req.session.pets.published_at,
-			contact: req.session.pets.contact,
+		// 1. check db for clicked pet, check db for user, put in const's
+		const userData = await User.findByPk(req.session.user.id)
+		const petData = await Pets.findOne({
+			where: { pf_id: req.body.pf_id },
+		})
+		// 2. if pet exists create the relationship between the user and pet
+		if (!petData) {
+			const savePet = await Pets.create({
+				id: req.body.id,
+				type: req.body.type,
+				pf_id: req.body.pf_id,
+				breeds: req.body.breeds,
+				age: req.body.age,
+				gender: req.body.gender,
+				size: req.body.size,
+				name: req.body.name,
+				description: req.body.description,
+				photo: req.body.photos,
+				status: req.body.status,
+				published_at: req.body.published_at,
+				contact: req.body.contact,
 		});
-		res.status(200).json(savePet);
+			const userSavesPet = await userData.addPets(savePet)
+			res.status(200).json(userSavesPet);
+		} else {
+			const userSavesPet = await userData.addPets(petData)
+			res.status(200).json(userSavesPet);
+		}
+
+		// 3. make a  record in DB if does not exist, then 
+			// get user info out of DB
+		
+
 	} catch (err) {
+		console.log(err)
 		res.status(400).json(err);
 	}
 });
 // removes a pet from the saved pets list
 router.delete("/", async (req, res) => {
 	try {
-		const savedPetCard = SavedPets.destroy({
+		const savedPetCard = Pets.destroy({
 			where: {
 				id: req.params.id,
 			},
