@@ -78,7 +78,7 @@ router.get("/results", async (req, res) => {
 		const petData = dbPetData.map((pd) => pd.get({ plain: true }));
 		// console.log("weeeeeeeeeeeeeeeeeeeeeeee");
 		// console.log(petData);
-		return res.render("searchresults", { petData });
+		return res.render("searchresults", { petData, loggedIn: req.session.loggedIn });
 	} catch (err) {
 		res.status(500).json(err);
 	}

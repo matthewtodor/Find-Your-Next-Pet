@@ -7,7 +7,7 @@ const withAuth = require("../../utils/auth");
 router.get("/", withAuth, async (req, res) => {
 	try {
 		const petDB = await Pets.findAll({
-			include: [{ model: User, through: 'user_saved' }],
+			include: [{ model: User, through: "user_saved" }],
 		});
 		const pet = petDB.map((data) => data.get({ plain: true }));
 
@@ -51,7 +51,6 @@ router.post("/", withAuth, async (req, res) => {
 			const userSavesPet = await userData.addPets(petData);
 			res.status(200).json(userSavesPet);
 		}
-
 	} catch (err) {
 		console.log(err);
 		res.status(400).json(err);
