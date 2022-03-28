@@ -27,22 +27,28 @@ const searchButtonHandler = async function (event) {
   console.log(response);
   document.location.reload()
   response.then(document.location.replace("/api/search/results"))
-    // if (data.ok) {
-    //   console.log(data);
-    //   console.log(data.body);
-    //   console.log(data.json());
-
-      
-    // } else {
-    //   console.log("something went wrong");
-    // }
 };
 
 const saveBtnHandler = async function (event) {
   event.preventDefault();
+  if (event.target.matches(".favoritepet") ){
+    let btnElId = event.target.id;
+    const {type, pf_id, breeds, age, gender, name, size, description, photo, status, contact, published_at } = event.target.dataset
+    console.log(btnElId);
+    console.log({type, pf_id, breeds, age, gender, name, size, description, photo, status, contact, published_at })
+    const response = await fetch("/api/pets", {
+      method: "POST",
+      body: JSON.stringify(event.target.dataset),
+      headers: { "Content-Type": "application/json" },
+    }); 
+    if (response.ok){
+      const data = await response.json()
+      console.log("PET SAVED***  ", data)
+    }
+    
+  };
   //look ay btn id
-  
-  
+
 
 }
 
@@ -51,6 +57,8 @@ document
   .querySelector("#searchbutton")
   .addEventListener("click", searchButtonHandler);
 
-document
-  .querySelectorAll(".favoritepet")
-  .addEventListener("click", saveBtnHandler);
+
+document.querySelector("#searchresultscontainer")
+// event delegation class favoritepet
+
+.addEventListener("click", saveBtnHandler);
