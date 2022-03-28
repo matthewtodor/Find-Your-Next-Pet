@@ -2,7 +2,7 @@
 	<div class="row g-0">
 		<div class="col-md-4">
 			<div class="savedpetimageholder">
-				<img src={{primary_photo_cropped[3]}} href="/pets/:id" class="img-fluid" alt="{{description}}">
+				<img src={{photo}} href="/pets/:id" class="img-fluid" alt="{{description}}">
 			</div>
 		</div>
 		<div class="col-md-8">
@@ -11,10 +11,10 @@
 				<h5 class="card-title">{{name}}</h5>
 				<ul class="card-text" style="list-style: none;">
 					<li>{{gender}}</li>
-					<li>{{breed.primary}}</li>
+					<li>{{breed}}</li>
 					<li>{{age}}</li>
 				</ul>
-				<p class="card-text"><small class="text-muted">{{contact.address.postcode}}</small></p>
+				<p class="card-text"><small class="text-muted">{{contact}}</small></p>
 			</div>
 		</div>
 	</div>

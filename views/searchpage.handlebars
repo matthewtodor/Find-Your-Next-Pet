@@ -50,52 +50,10 @@
 			<div class="col-12" id="searchheader">
 				<h3>Search Results</h3>
 			</div>
-
 			<div id="searchresults" style="overflow:auto;">
-			{{#each petSearchCall as |results|}}
+			{{#each petData as |results|}}
 			{{> searchresults-details}}
 			{{/each}}
-			
-			
-			</div>
-
-			
-		</div>
-
-
-
-		<div id="petdetailcontainer" class="col-12 col-lg-5 col-xxl-5 p-2 m-1">
-			<div class="col-12"><img id="petdetailimg" class="col-6"
-					src="{{petSearchCall.[0].primary_photo_cropped.full}}" alt="dog"></div>
-			<div id="petdetailname" class="col-12">
-				{{!-- TODO: when saved, fa-regular in class changes to fa-solid --}}
-				<h3>{{name}} - <i type="button" class="fa-regular fa-heart"></i></h3>
-			</div>
-			<div id="petdetailtext" class="col-12">
-				<ul class="herolist" style="list-style: none;">
-
-
-					<li>
-						{{breed.primary}}
-					</li>
-					<li>
-						{{gender}}
-					</li>
-					<li>
-						{{age}}
-					</li>
-					<li>
-						<p>{{description}}</p>
-					</li>
-					<li>
-						{{contact.email}}
-					</li>
-				</ul>
 			</div>
 		</div>
-
-
 	</section>
-
-
-<script src="/js/search.js"></script>
