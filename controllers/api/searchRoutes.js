@@ -3,6 +3,7 @@ const petfinder = require("@petfinder/petfinder-js");
 const sequelize = require("../../config/connection");
 const { SearchedPets } = require("../../models");
 const { route } = require("./resultsRoute");
+const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
 	try {
@@ -15,7 +16,6 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-<<<<<<< HEAD
 	function GetPetsFromAPI(type, limit) {
 		const pf = new petfinder.Client({
 			apiKey: process.env.API_KEY,
@@ -32,6 +32,7 @@ router.post("/", async (req, res) => {
 				search.forEach((pet) =>
 					SearchedPets.create({
 						type: pet.type,
+						pf_id: pet.id,
 						breeds: pet.breeds.primary,
 						age: pet.age,
 						gender: pet.gender,
@@ -54,47 +55,6 @@ router.post("/", async (req, res) => {
 			// })
 			.catch((err) => console.log(err));
 	}
-=======
-  function GetPetsFromAPI(type, limit) {
-    const pf = new petfinder.Client({
-      apiKey: process.env.API_KEY,
-      secret: process.env.SECRET,
-    });
-    pf.animal
-      .search({
-        type,
-        limit,
-      })
-      .then(function (response) {
-        const search = response.data.animals;
-        SearchedPets.truncate();
-        search.forEach((pet) =>
-          SearchedPets.create({
-            type: pet.type,
-            pf_id: pet.id,
-            breeds: pet.breeds.primary,
-            age: pet.age,
-            gender: pet.gender,
-            size: pet.size,
-            name: pet.name,
-            description: pet.description,
-            photo: pet.primary_photo_cropped?.full,
-            status: pet.status,
-            published_at: pet.published_at,
-            contact: pet.contact.email,
-          })
-        );
-      })
-      // .then(function (req, res) {
-      //   const dbPetData = SearchedPets.findAll({});
-      //   console.log("weeeeeeeeeeeeeeeeeeeeeeee");
-      //   console.log(dbPetData);
-      //   const petData = dbPetData.map((pd) => pd.get({ plain: true }));
-      //   res.render("searchpage", petData);
-      // })
-      .catch((err) => console.log(err));
-  }
->>>>>>> main
 
 	// try {
 	let type = req.body.keyCheck;

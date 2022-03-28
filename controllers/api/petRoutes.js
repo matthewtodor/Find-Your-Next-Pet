@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const req = require("express/lib/request");
 const { Pets, User } = require("../../models");
+const withAuth = require("..utils/auth");
 
 router.get("/", async (req, res) => {
 	try {
@@ -30,14 +31,14 @@ router.get("/:id", async (req, res) => {
 	}
 });
 // creates a row for the saved pet with the included columns
-router.post("/", async (req, res) => {
-	console.log("arrived at backend  ", req.session)
+router.post("/", withAuth, async (req, res) => {
+	console.log("arrived at backend  ", req.session);
 	try {
 		// 1. check db for clicked pet, check db for user, put in const's
-		const userData = await User.findByPk(req.session.user.id)
+		const userData = await User.findByPk(req.session.user.id);
 		const petData = await Pets.findOne({
 			where: { pf_id: req.body.pf_id },
-		})
+		});
 		// 2. if pet exists create the relationship between the user and pet
 		if (!petData) {
 			const savePet = await Pets.create({
@@ -54,20 +55,18 @@ router.post("/", async (req, res) => {
 				status: req.body.status,
 				published_at: req.body.published_at,
 				contact: req.body.contact,
-		});
-			const userSavesPet = await userData.addPets(savePet)
+			});
+			const userSavesPet = await userData.addPets(savePet);
 			res.status(200).json(userSavesPet);
 		} else {
-			const userSavesPet = await userData.addPets(petData)
+			const userSavesPet = await userData.addPets(petData);
 			res.status(200).json(userSavesPet);
 		}
 
-		// 3. make a  record in DB if does not exist, then 
-			// get user info out of DB
-		
-
+		// 3. make a  record in DB if does not exist, then
+		// get user info out of DB
 	} catch (err) {
-		console.log(err)
+		console.log(err);
 		res.status(400).json(err);
 	}
 });
