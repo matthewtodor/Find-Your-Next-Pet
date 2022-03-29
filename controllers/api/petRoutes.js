@@ -4,10 +4,17 @@ const { Pets, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // gets all the users saved pets
+// gets all the users saved pets
 router.get("/", withAuth, async (req, res) => {
 	try {
 		const petDB = await Pets.findAll({
-			include: [{ model: User, through: "user_saved" }],
+			include: [
+				{
+					model: User,
+					through: "user_saved",
+					where: { id: req.session.user.id },
+				},
+			],
 		});
 		const pet = petDB.map((data) => data.get({ plain: true }));
 
@@ -59,7 +66,7 @@ router.post("/", withAuth, async (req, res) => {
 
 // removes a pet from the saved pets list
 router.delete("/", async (req, res) => {
-	console.log("I'm deleting an entry from the Pets DB")
+	console.log("I'm deleting an entry from the Pets DB");
 	try {
 		const savedPetCard = await Pets.destroy({
 			where: {
