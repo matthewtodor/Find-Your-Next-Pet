@@ -21,36 +21,6 @@ const searchButtonHandler = async function (event) {
 const saveBtnHandler = async function (event) {
 	event.preventDefault();
 	if (event.target.matches(".favoritepet")) {
-		// let btnElId = event.target.id;
-		// const {
-		//   type,
-		//   pf_id,
-		//   breeds,
-		//   age,
-		//   gender,
-		//   name,
-		//   size,
-		//   description,
-		//   photo,
-		//   status,
-		//   contact,
-		//   published_at,
-		// } = event.target.dataset;
-		// console.log(btnElId);
-		// console.log({
-		//   type,
-		//   pf_id,
-		//   breeds,
-		//   age,
-		//   gender,
-		//   name,
-		//   size,
-		//   description,
-		//   photo,
-		//   status,
-		//   contact,
-		//   published_at,
-		// });
 		const response = await fetch("/api/pets", {
 			method: "POST",
 			body: JSON.stringify(event.target.dataset),

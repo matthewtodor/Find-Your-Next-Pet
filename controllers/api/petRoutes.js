@@ -4,7 +4,6 @@ const { Pets, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // gets all the users saved pets
-// gets all the users saved pets
 router.get("/", withAuth, async (req, res) => {
 	try {
 		const petDB = await Pets.findAll({
